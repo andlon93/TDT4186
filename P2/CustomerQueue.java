@@ -35,7 +35,7 @@ public class CustomerQueue {
 			}
 			else done=true;
 		}
-		gui.println("NextSeat: "+nextSeat+", tempSeat: "+tempSeat);
+		//gui.println("NextSeat: "+nextSeat+", tempSeat: "+tempSeat);
 		return tempSeat;
 	}
 
@@ -48,7 +48,7 @@ public class CustomerQueue {
 			}
 			else done=true;
 		}
-		gui.println("LastSeat: "+lastSeat+", tempSeat: "+tempSeat);
+		//gui.println("LastSeat: "+lastSeat+", tempSeat: "+tempSeat);
 		return tempSeat;
 	}
 
@@ -59,7 +59,7 @@ public class CustomerQueue {
 			if(tempSeat>=18)tempSeat=tempSeat-18;
 			gui.emptyLoungeChair(tempSeat);
 			nextSeat++;
-			gui.println("#FreeSeats: "+(queue.size()-nextSeat)+", Barber removed, place: "+nextSeat);
+			gui.println("Customer removed from seat: "+getNextSeatPlace());
 			return ret;
 		}
 		return null;
@@ -69,7 +69,7 @@ public class CustomerQueue {
 	public synchronized void addCustomer(Customer c) {
 		if (queue.size() - nextSeat < queueLength) {
 			queue.add(c);
-			gui.println("#FreeSeats: "+(queue.size()-nextSeat)+", doorman added, place: "+lastSeat);
+			gui.println("Customer added placed in "+getLastSeatPlace());
 			int tempSeat = getLastSeatPlace();
 			boolean done= false;
 			while(!done){
@@ -99,12 +99,4 @@ public class CustomerQueue {
 		return false;
 	}
 
-	public synchronized boolean hasFreeSeat(){
-		if(queue.size()-nextSeat<queueLength){
-			return true;
-		}
-		return false;
-	}
-
-	// Add more methods as needed
 }
