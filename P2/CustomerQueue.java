@@ -71,7 +71,7 @@ public class CustomerQueue {
 			queue.add(c);
 			gui.println("Customer added placed in "+getLastSeatPlace());
 			int tempSeat = getLastSeatPlace();
-			boolean done= false;
+			boolean done = false;
 			while(!done){
 				if (tempSeat>=18)tempSeat=tempSeat-18;
 				else done= true;
@@ -79,8 +79,6 @@ public class CustomerQueue {
 			gui.fillLoungeChair(tempSeat,c);
 			lastSeat++;
 			//notifyAll();
-
-
 		}
 	}
 
