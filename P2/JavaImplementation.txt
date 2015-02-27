@@ -1,0 +1,9 @@
+Producer/Consumer is implemented by classes that interact.
+The CustomerQueue class is filled by the doorman and emptied by the barbers
+The Doorman checks if the queue if full, if it's not: he generates a customer and places him
+The barbers check if the queue has people in it, and if it does, the barber retrieves a customer.
+
+The methods for adding and removing customers are synchronized, to avoid errors where two customers
+are placed in the same seat, and also avoiding two barbers retrieving the same person.
+The "circular buffer" for the chairs are actually just an arrayList, where new people are added at the end
+We keep track of the indices with the variables: nextSeat(the lowest index) and lastSeat(the highest index)
